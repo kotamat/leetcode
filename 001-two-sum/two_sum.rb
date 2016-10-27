@@ -2,12 +2,10 @@
 # @param {Integer} target
 # @return {Integer[]}
 def two_sum(nums, target)
-  i = 0
-  while n = nums.pop do
-    result = nums.find_index(target - n)
-    return [result, nums.length] if result != nil
-    i += 1
+  until
+    result = nums.index(target - nums.pop)
   end
+  [result, nums.length]
 end
 
 nums = [3, 2, 5]
