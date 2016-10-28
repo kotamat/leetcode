@@ -2,13 +2,17 @@
 # @param {Integer} target
 # @return {Integer[]}
 def two_sum(nums, target)
-  until
-    result = nums.index(target - nums.pop)
+  pool = {}
+  i = nums.length - 1
+  while n = nums.pop
+    break if pool[n]
+    pool[target - n] = i
+    i -= 1
   end
-  [result, nums.length]
+  [nums.length, pool[n]]
 end
 
-nums = [3, 2, 5]
+nums = [0, 3, 2, 5, 0, 10]
 target = 7
 
 p two_sum(nums, target)
