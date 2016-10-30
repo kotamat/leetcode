@@ -1,24 +1,8 @@
-package main
-
-import (
-	"fmt"
-)
+package _02_add_two_numbers
 
 type ListNode struct {
 	Val int
 	Next *ListNode
-}
-
-func main() {
-	//l1 := &ListNode{Val: 1, Next: &ListNode{Val: 8, Next:nil}}
-	//l2 := &ListNode{Val: 0, Next: nil}
-	l1 := &ListNode{Val: 2, Next: &ListNode{Val: 4, Next: &ListNode{Val: 3, Next: nil}}}
-	l2 := &ListNode{Val: 5, Next: &ListNode{Val: 6, Next: &ListNode{Val: 4, Next: nil}}}
-	li := addTwoNumbers(l1, l2)
-	for l := li; l != nil ; l = l.Next {
-		fmt.Println(l.Val)
-	}
-
 }
 
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
