@@ -1,17 +1,4 @@
-package main
-
-import (
-	"fmt"
-)
-
-func main() {
-	num1 := []int{1, 3}
-	num2 := []int{2,4,5}
-
-	result := findMedianSortedArrays(num1, num2)
-	fmt.Println("result is ", result)
-
-}
+package _04_median2arrays
 
 func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 
@@ -45,8 +32,6 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 				base = nums2
 				appended = nums1
 			}
-			fmt.Println(base)
-			fmt.Println(appended)
 
 			for _, value := range base {
 				for i := appendedKey; i < len(appended) ; i++ {
@@ -63,7 +48,6 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 				mix = append(mix, appended[appendedKey:]...)
 			}
 
-			fmt.Println(mix)
 		}
 		return mix
 
@@ -80,5 +64,3 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 	}
 	return -1
 }
-
-//

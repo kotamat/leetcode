@@ -13,7 +13,7 @@ func lengthOfLongestSubstring(s string) int {
 		return -1
 	}
 
-	for i, r := range s {
+	for _, r := range s {
 		if index := strpos(r, current); index >= 0 {
 			if len(current) > len(longest) {
 				longest = current
