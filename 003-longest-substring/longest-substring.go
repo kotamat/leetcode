@@ -1,14 +1,4 @@
-package main
-
-import (
-	"fmt"
-)
-
-func main() {
-	s := "ddrewjifodabre"
-	lenght := lengthOfLongestSubstring(s)
-	fmt.Println(lenght)
-}
+package _03_longest_substring
 
 func lengthOfLongestSubstring(s string) int {
 	current := []rune{}
@@ -28,14 +18,9 @@ func lengthOfLongestSubstring(s string) int {
 			if len(current) > len(longest) {
 				longest = current
 			}
-			current = current[index+1:]
-			//fmt.Println(string(r), " match index is ", index)
+			current = current[index + 1:]
 		}
 		current = append(current, r)
-		//fmt.Println("current is ", string(current))
-		//fmt.Println("longest is ", string(longest))
-
-		//fmt.Println(i, r)
 	}
 	if len(current) > len(longest) {
 		longest = current
