@@ -9,8 +9,6 @@ func longestPalindrome(s string) string {
 	LRi := 0
 
 	calc := func(Li int, Ri int) {
-		PLi := 0
-		PRi := 0
 		for ; Li >= 0 && Ri < sLen; {
 			if s[Li] != s[Ri] {
 				break
@@ -18,12 +16,9 @@ func longestPalindrome(s string) string {
 			Li--
 			Ri++
 		}
-		PLi = Li + 1
-		PRi = Ri - 1
-
-		if PRi - PLi > LRi - LLi {
-			LRi = PRi
-			LLi = PLi
+		if Ri - Li - 2 > LRi - LLi {
+			LLi = Li + 1
+			LRi = Ri - 1
 		}
 	}
 
