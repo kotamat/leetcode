@@ -9,7 +9,7 @@ func longestPalindrome(s string) string {
 	LRi := 0
 
 	calc := func(Li int, Ri int) {
-		for ; Li >= 0 && Ri < sLen; {
+		for Li >= 0 && Ri < sLen {
 			if s[Li] != s[Ri] {
 				break
 			}
