@@ -3,13 +3,19 @@ package _06_zigzag_conversion
 import (
 	"testing"
 	"github.com/stretchr/testify/assert"
-	"github.com/pkg/profile"
 )
 
 func TestZigzag(t *testing.T)  {
 	s := "PAYPALISHIRING"
-	nRows := 6
-	answer := "PINALSIGYAHRPI"
+	nRows := 3
+	answer := "PAHNAPLSIIGYIR"
+	assert.Equal(t, convert(s, nRows),answer)
+}
+func TestZigzag2(t *testing.T)  {
+	s := "Apalindromeisaword,phrase,number,orothersequenceofunitsthatcanbereadthesamewayineitherdirection,withgeneralallowancesforadjustmentstopunctuationandworddividers."
+
+	nRows := 3
+	answer := "PAHNAPLSIIGYIR"
 	assert.Equal(t, convert(s, nRows),answer)
 }
 

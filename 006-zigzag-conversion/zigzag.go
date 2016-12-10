@@ -1,55 +1,41 @@
-//package _06_zigzag_conversion
-package main
-
-import (
-	"github.com/pkg/profile"
-)
-
-func main() {
-	profile.MemProfileRate(1)
-	defer profile.Start(profile.MemProfile, profile.ProfilePath("my.prof"), profile.CPUProfile).Stop()
-	s := "PAYPALISHIRING"
-	nRows := 6
-	convert(s, nRows)
-}
+package _06_zigzag_conversion
 
 func convert(s string, numRows int) string {
 	l := len(s)
-	if l == 0 || numRows == 1 {
+	if l == 0 || numRows == 1 || l <= numRows {
 		return s
 	}
-	sl := [][]byte{}
+	roopMod := numRows * 2 - 2
+
 	result := []byte{}
-	lastIndex := 0
-	for l > lastIndex {
-		roopMod := numRows * 2 - 2
-		roopIndex := lastIndex % roopMod
-		if roopIndex == 0 {
-			if l - lastIndex > numRows {
-				sl = append(sl, []byte(s[lastIndex:lastIndex + numRows]))
-			} else {
-				sl = append(sl, []byte(s[lastIndex:]))
-				break
-			}
-			lastIndex += numRows
-		} else {
-			tmp := make([]byte, numRows)
-			tmp[roopMod - roopIndex] = byte(s[lastIndex])
-			sl = append(sl, tmp)
-			lastIndex ++
+	width := l / numRows
+
+	// pattern 0
+	for j := 0; j <= width; j++ {
+		if l > j * roopMod {
+			result = append(result, s[j * roopMod])
 		}
 	}
 
-	for j := 0; j < numRows; j++ {
-		for _, str := range sl {
-			if j >= len(str) {
-				continue
+	for i := 1; i < numRows - 1; i++ {
+		for j := 0; j <= width; j++ {
+			// pattern even
+			if l > j * roopMod + i {
+				result = append(result, s[j * roopMod + i])
+				//pp.Printf("added %s\n", string(s[j*roopMod + i]))
 			}
-			if r := str[j]; r != 0 {
-				result = append(result, str[j])
+			// pattern odd
+			if l > (j + 1) * roopMod - i {
+				result = append(result, s[(j + 1) * roopMod - i])
+				//pp.Printf("added %s\n", string(s[j*roopMod + roopMod - i]))
 			}
 		}
 	}
-
+	// pattern center
+	for j := 0; j <= width; j++ {
+		if l > j * roopMod + numRows -1 {
+			result = append(result, s[j * roopMod + numRows -1])
+		}
+	}
 	return string(result)
 }
