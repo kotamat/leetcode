@@ -70,3 +70,6 @@ _testmain.go
 *.test
 *.prof
 
+node_modules.bun
+
+/target
