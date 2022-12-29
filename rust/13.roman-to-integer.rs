@@ -81,9 +81,31 @@
  */
 
 // @lc code=start
+use std::collections::HashMap;
 impl Solution {
     pub fn roman_to_int(s: String) -> i32 {
-        3
+        let romans = HashMap::from([
+            ('I', 1),
+            ('V', 5),
+            ('X', 10),
+            ('L', 50),
+            ('C', 100),
+            ('D', 500),
+            ('M', 1000),
+        ]);
+        let mut prev = 0;
+        let mut result = 0;
+        for curr in s.chars().rev() {
+            if let Some(num) = romans.get(&curr) {
+                if prev > *num {
+                    result = result - *num;
+                } else {
+                    result = result + *num;
+                }
+                prev = *num
+            }
+        }
+        result
     }
 }
 // @lc code=end
