@@ -92,19 +92,21 @@ function romanToInt(s: string): number {
     M: 1000,
   } as const;
 
-  return s
-    .split("")
-    .reverse()
-    .reduce((prev, curr) => {
-      if (
-        (prev >= 5 && romans[curr] < 5) ||
-        (prev >= 50 && romans[curr] < 50) ||
-        (prev >= 500 && romans[curr] < 500)
-      ) {
-        return (prev -= romans[curr]);
-      }
-      return (prev += romans[curr]);
-    }, 0);
+  const sArr = s.split("");
+  let result = 0;
+  for (let i = sArr.length - 1; i >= 0; i--) {
+    const curr = sArr[i];
+    if (
+      (result >= 5 && romans[curr] < 5) ||
+      (result >= 50 && romans[curr] < 50) ||
+      (result >= 500 && romans[curr] < 500)
+    ) {
+      result -= romans[curr];
+    } else {
+      result += romans[curr];
+    }
+  }
+  return result;
 }
 // @lc code=end
 
