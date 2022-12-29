@@ -1,3 +1,1 @@
-fn main() {
-    let s = Solution {};
-}
+fn main() {}
