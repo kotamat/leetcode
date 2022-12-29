@@ -114,6 +114,6 @@ asserts(romanToInt("MCMXCIV"), 1994);
 
 function asserts(a: any, b: any) {
   if (a !== b) {
-    throw new Error(`asserion is failured, a = ${a}, b = ${b}`);
+    throw new Error(`Assertion is Failed, a = ${a}, b = ${b}`);
   }
 }
