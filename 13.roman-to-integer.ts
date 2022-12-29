@@ -94,17 +94,15 @@ function romanToInt(s: string): number {
 
   const sArr = s.split("");
   let result = 0;
+  let prev = 0;
   for (let i = sArr.length - 1; i >= 0; i--) {
     const curr = sArr[i];
-    if (
-      (result >= 5 && romans[curr] < 5) ||
-      (result >= 50 && romans[curr] < 50) ||
-      (result >= 500 && romans[curr] < 500)
-    ) {
+    if (prev > romans[curr]) {
       result -= romans[curr];
     } else {
       result += romans[curr];
     }
+    prev = romans[curr];
   }
   return result;
 }
