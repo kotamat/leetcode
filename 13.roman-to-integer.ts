@@ -81,7 +81,31 @@
  */
 
 // @lc code=start
-function romanToInt(s: string): number {}
+function romanToInt(s: string): number {
+  const romans = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+  } as const;
+
+  return s
+    .split("")
+    .reverse()
+    .reduce((prev, curr) => {
+      if (
+        (prev >= 5 && romans[curr] < 5) ||
+        (prev >= 50 && romans[curr] < 50) ||
+        (prev >= 500 && romans[curr] < 500)
+      ) {
+        return (prev -= romans[curr]);
+      }
+      return (prev += romans[curr]);
+    }, 0);
+}
 // @lc code=end
 
 asserts(romanToInt("III"), 3);
